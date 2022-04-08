@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}">
+    <link href="{% static  'js/setupajax.js' %}">
+
+    <script src="https://v3.bootcss.com/assets/js/ie-emulation-modes-warning.js"></script>
+<style>
+    body {
+        height: 100%;
+        width: 100%;
+        background: url({% static 'imgs/lzcjschool.jpg' %});
+        background-size: cover;
+    }
+</style>
+</head>
+<body>
+
+<div class="container" style="width: 500px;)">
+    <form class="form-signin" action="/data/login/" method="post">
+        {% csrf_token %}
+        <h3 class="form-signin-heading" style="margin-left: 0px">兰州财经大学学生管理系统</h3>
+        <label for="username" class="sr-only">Email address</label>
+        <select class="form-control" name="seltype">
+            <option selected="selected">学生</option>
+            <option>教师</option>
+            <option>管理员</option>
+        </select>
+        <input id="username" class="form-control" placeholder="请输入用户名" required="" autofocus="" name="username"
+               type="username">
+        <span id="e1"></span>
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" class="form-control" placeholder="请输入密码" name="password" required="" type="password"
+               id="ipwd">
+        <span style="color: red">{{ errmsg }}</span>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+    </form>
+    <div class="checkbox" style="float: left;cursor: pointer;margin-left: 77px">
+
+
+    </div>
+    {#    <div class="checkbox " style="float: right;margin-top: 10px;cursor: pointer;">#}
+    {#              <a href="/forget_pwd/" style="text-decoration: none">忘记密码？</a>#}
+    {#        <button type="button" style="border: none;color: #428bca;margin-right: 75px" onclick="alert('请联系管理员获取!')">#}
+    {#            忘记密码？#}
+    {#        </button>#}
+    {#    </div>#}
+
+
+</div> <!-- /container -->
+</body>
+</html>

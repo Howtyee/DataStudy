@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <form class="form-horizontal" method="post" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{ field.label }}</label>
+            <div class="col-sm-10">
+                {{ field }}
+                <span style="color: red;">{{ field.errors.0 }}</span>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-primary" value="提 交">
+            </div>
+        </div>
+    </form>
+{% endblock %}

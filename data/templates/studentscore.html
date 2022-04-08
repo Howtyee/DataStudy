@@ -1,0 +1,66 @@
+{% extends 'stulayout.html' %}
+{#{% load crm %}#}
+{% block content %}
+{#   考试批次选择   #}
+
+     <form method="post" novalidate action="/data/search/">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="input-group">
+                    <select style="width: 150px;" class="form-control" id="ipholder" name="systype"
+                            placeholder="选择考试批次">
+                        <option value="">---选择考试批次---</option>
+                        {% for  row in  queryset %}
+                        <option value="{{ row.id }}">{{ row.batch_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <br>
+{#                    <button style="margin-left: 200px;margin-top:-60px" class="btn btn-success" type="submit"><i#}
+{#                            class="fa fa-search-plus" aria-hidden="true"></i> 点击快速搜索#}
+{#                    </button>#}
+
+                    {#      </span>#}
+                </div><!-- /input-group -->
+
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </form>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>所属班级</th>
+            <th>考试批次</th>
+            <th>姓名</th>
+            <th>科目</th>
+            <th>成绩</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in score_queryset %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.grade_name }}</td>
+                <td>{{ row.batch_name }}</td>
+                <td>{{ row.stu_name }}</td>
+                <td>{{ row.project }}</td>
+                <td>{{ row.score }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="bot">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-lg"
+                style="float: right;margin-right: 50px;margin-top: 50px;">
+                {{ page_html|safe }}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

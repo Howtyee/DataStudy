@@ -1,0 +1,55 @@
+{% extends 'stulayout.html' %}
+{#{% load crm %}#}
+{% block content %}
+    <div style="margin: 5px;">
+{#        <a href="/data/addstudentinfo/" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> 添加学生个人信息</a>#}
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>所属班级</th>
+            <th>生日</th>
+            <th>性别</th>
+            <th>入学时间</th>
+            <th>登陆密码</th>
+            <th>家庭地址</th>
+            <th>身份证</th>
+            <th>备注</th>
+            <th>编辑</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in student_queryset %}
+            <tr>
+                <td>{{ row.numid }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.grade }}</td>
+                <td>{{ row.birth }}</td>
+                <td>{{ row.get_gender_display }}</td>
+                <td>{{ row.study_time }}</td>
+                <td>{{ row.password }}</td>
+                <td>{{ row.addr }}</td>
+                <td>{{ row.number }}</td>
+                <td>{{ row.other }}</td>
+                <td>
+                    <a href="/data/editstudentinfo/{{ row.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+{#                    |#}
+{#                    <a href="/data/delstudentinfo/{{ row.id }}" style="color: red;">#}
+{#                        <i class="fa fa-trash-o" aria-hidden="true"></i>#}
+{#                    </a>#}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="bot">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-lg"
+                style="float: right;margin-right: 50px;margin-top: 50px;">
+                {{ page_html|safe }}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'stulayout.html' %}
+{#{% load crm %}#}
+{% block content %}
+{#   考试批次选择   #}
+
+     <form method="post" novalidate action="/data/stupasswdlist/">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="input-group">
+                    <input class="form-control" placeholder="请输入修改后的密码" style="width: 300px" name="passwd">
+                    <br>
+                    <br>
+                    <button style="margin-top:10px" class="btn btn-success" type="submit"><i
+                            class="fa fa-search-plus" aria-hidden="true"></i> 点击提交修改
+                    </button>
+
+                    {#      </span>#}
+                </div><!-- /input-group -->
+
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </form>
+
+{% endblock %}

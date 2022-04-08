@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{#{% load crm %}#}
+{% block content %}
+    <div style="margin: 5px;">
+        <a href="/data/addadminzhuanyeinfolist/" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> 添加专业信息</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>专业名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in zhuanye_queryset %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.zhuanye_name }}</td>
+                <td>
+                    <a href="/data/editadminzhuanyeinfolist/{{ row.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    |
+                    <a href="/data/deladminzhuanyeinfolist/{{ row.id }}" style="color: red;">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="bot">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-lg"
+                style="float: right;margin-right: 50px;margin-top: 50px;">
+                {{ page_html|safe }}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

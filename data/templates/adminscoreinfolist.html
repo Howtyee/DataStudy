@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{#{% load crm %}#}
+{% block content %}
+    <div style="margin: 5px;">
+{#        <a href="/data/addscoreinfo/" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> 录入考试成绩信息</a>#}
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>所属班级</th>
+            <th>考试批次</th>
+            <th>姓名</th>
+            <th>科目</th>
+            <th>成绩</th>
+
+{#            <th>操作</th>#}
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in score_queryset %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.grade_name }}</td>
+                <td>{{ row.batch_name }}</td>
+                <td>{{ row.stu_name }}</td>
+                <td>{{ row.project }}</td>
+                <td>{{ row.score }}</td>
+{#                <td>#}
+{#                    <a href="/data/editscoreinfo/{{ row.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>#}
+{#                    |#}
+{#                    <a href="/data/delscoreinfo/{{ row.id }}" style="color: red;">#}
+{#                        <i class="fa fa-trash-o" aria-hidden="true"></i>#}
+{#                    </a>#}
+{#                </td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="bot">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-lg"
+                style="float: right;margin-right: 50px;margin-top: 50px;">
+                {{ page_html|safe }}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

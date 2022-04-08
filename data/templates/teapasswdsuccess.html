@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        {#      <div class="h2">bootstrap框架 <small>s</small>#}
+        {#      </div>#}
+
+        <!-- 静态模态框 官方有一个bug就是在写静态框的时候在按钮上要绑定同一个class-->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <form action="/data/login/">
+                        <button type="button" class="close myclose" data-dismiss="modal">
+                        </button>
+                    </form>
+                    <h3>成功！！！</h3>
+                </div>
+                <!-- body部分 -->
+                <div class="modal-body">
+                    <p>教师账户密码修改成功</p>
+                </div>
+                <!-- footer部分 -->
+                <div class="modal-footer">
+                    {#             <button class="btn btn-info myclose" data-dismiss="modal">重新注册</button>#}
+                    <form action="/data/teaindex/">
+                        <button class="btn btn-primary myclose">返回首页</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $('.myclose').click(function () {
+            $('.modal-dialog').css('display', 'none')
+        })
+    })
+</script>

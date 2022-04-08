@@ -1,0 +1,40 @@
+{% extends 'stulayout.html' %}
+{#{% load crm %}#}
+{% block content %}
+    <div style="margin: 5px;">
+        <a href="/data/addstudentselectgradelist/" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> 添加学生选课信息</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>选择课程</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in student_queryset %}
+            <tr>
+
+                <td>{{ row.name }}</td>
+                <td>{{ row.kecheng_name }}</td>
+                <td>
+                    <a href="/data/editstudentselectgradelist/{{ row.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    |
+                    <a href="/data/delstudentselectgradelist/{{ row.id }}" style="color: red;">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="bot">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-lg"
+                style="float: right;margin-right: 50px;margin-top: 50px;">
+                {{ page_html|safe }}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
